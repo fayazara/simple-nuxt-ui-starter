@@ -7,14 +7,14 @@
         <NuxtPage />
       </NuxtLayout>
     </UMain>
+    <ClientOnly>
+      <LazyUContentSearch
+        :files="files"
+        :navigation="navigation"
+        :color-mode="false"
+      />
+    </ClientOnly>
   </UApp>
-  <ClientOnly>
-    <LazyUContentSearch
-      :files="files"
-      :navigation="navigation"
-      :color-mode="false"
-    />
-  </ClientOnly>
 </template>
 
 <script setup lang="ts">
@@ -29,6 +29,14 @@ const { data: navigation } = await useAsyncData(
   {
     transform: (data) =>
       data.find((item) => item.path === '/docs')?.children || [],
+  }
+);
+
+const { data: files } = useLazyAsyncData(
+  'search',
+  () => queryCollectionSearchSections('docs'),
+  {
+    server: false,
   }
 );
 
