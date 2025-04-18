@@ -7,7 +7,7 @@ const route = useRoute();
 const navigation = inject<Ref<ContentNavigationItem[]>>("navigation");
 
 definePageMeta({
-  layout: "docs",
+  layout: "default",
 });
 
 const { data } = await useAsyncData(
@@ -78,37 +78,59 @@ const communityLinks = computed(() => [
 </script>
 
 <template>
-  <UPage v-if="page">
-    <UPageHeader :title="page.title" :links="page.links" :headline="headline">
-      <template #description>
-        <MDC
-          v-if="page.description"
-          :cache-key="`${kebabCase(route.path)}-description`"
-          :value="page.description"
-          unwrap="p"
-        />
+  <UContainer>
+    <UPage>
+      <template #left>
+        <UPageAside>
+          <UContentNavigation
+            color="neutral"
+            highlight
+            :navigation="navigation"
+            :ui="{
+              linkTrailingIcon: 'size-4 text-neutral-500',
+              linkLeadingIcon: 'size-4',
+              listWithChildren: 'ms-3',
+            }"
+          />
+        </UPageAside>
       </template>
-    </UPageHeader>
 
-    <UPageBody>
-      <ContentRenderer v-if="page.body" :value="page" />
+      <UPage v-if="page">
+        <UPageHeader :title="page.title" :links="page.links" :headline="headline">
+          <template #description>
+            <MDC
+              v-if="page.description"
+              :cache-key="`${kebabCase(route.path)}-description`"
+              :value="page.description"
+              unwrap="p"
+            />
+          </template>
+        </UPageHeader>
 
-      <USeparator />
+        <UPageBody>
+          <ContentRenderer v-if="page.body" :value="page" />
 
-      <UContentSurround :surround="surround" />
-    </UPageBody>
+          <USeparator />
 
-    <template v-if="page?.body?.toc?.links?.length" #right>
-      <UContentToc :links="page.body.toc.links" class="z-[2]">
-        <template #bottom>
-          <USeparator v-if="page.body.toc.links.length" type="dashed" />
+          <UContentSurround :surround="surround" />
+        </UPageBody>
 
-          <UPageLinks title="Need help?" :links="communityLinks" />
-          <!-- <USeparator type="dashed" />
+        <template v-if="page?.body?.toc?.links?.length" #right>
+          <UContentToc :links="page.body.toc.links" class="z-[2]">
+            <template #bottom>
+              <USeparator v-if="page.body.toc.links.length" type="dashed" />
 
-          <div class="h-40 bg-red-500" /> -->
+              <UPageLinks title="Need help?" :links="communityLinks" />
+            </template>
+          </UContentToc>
         </template>
-      </UContentToc>
-    </template>
-  </UPage>
+      </UPage>
+    </UPage>
+  </UContainer>
 </template>
+
+<style scoped>
+::v-deep(nav) {
+  top: 56px;
+}
+</style>

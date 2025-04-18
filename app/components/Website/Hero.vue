@@ -1,12 +1,11 @@
 <template>
   <UContainer>
-    <div class="py-20 sm:py-32 text-center max-w-2xl mx-auto">
-      <h1 class="font-bold text-4xl sm:text-5xl font-display">
-        This is just a placeholder. You need to add a title here.
+    <div class="py-20 sm:py-32 text-center max-w-4xl mx-auto">
+      <h1 class="font-bold text-4xl sm:text-6xl font-display">
+        The quickest way to run an online store.
       </h1>
-      <p class="mt-6 text-lg sm:text-xl text-neutral-500">
-        This is a description that is longer and more detailed. Give a quick
-        overview of what the product is about.
+      <p class="mt-6 text-base sm:text-xl text-neutral-500 text-balance">
+        The above is just a placeholder title. You need to add something that catches the attention of the user.
       </p>
       <div class="mt-8 flex justify-center gap-3 items-center">
         <UButton
@@ -26,7 +25,3 @@
     </div>
   </UContainer>
 </template>
-
-<script lang="ts" setup></script>
-
-<style></style>

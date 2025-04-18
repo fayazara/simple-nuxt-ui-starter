@@ -11,7 +11,7 @@
           </NuxtLink>
           <WebsiteBadge
             title="Catchy Hook"
-            url="/"
+            url="/blog/supersaas-v3-is-here"
             description="Announce something new here"
           />
         </div>
@@ -83,6 +83,10 @@
 const isMobileMenuOpen = ref(false);
 const isTLDRModalOpen = ref(false);
 const links = [
+  {
+    label: 'Pricing',
+    to: '/#pricing',
+  },
   {
     label: 'Blog',
     to: '/blog',
