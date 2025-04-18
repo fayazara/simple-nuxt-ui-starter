@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+@import "@nuxt/ui-pro";
+
+@plugin "@tailwindcss/typography";
+
+@source "../../../content/**/*.md";
+
+@theme static {
+  --font-sans: 'Geist', sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+  --font-display: 'Bricolage Grotesque', sans-serif;
+}
+
+.chunky-card {
+  box-shadow: 0 0 0 1px #70451a1a, 0 1px 2px #70451a0a, 0 3px 5px #70451a33,
+    inset 0 -3px #f0f0efcc;
+}
+
+.metal-shadow {
+  box-shadow: 0 0 0 1px #0e3f7e0f, 0 1px 1px -0.5px #2a334608,
+    0 2px 2px -1px #2a33460a, 0 3px 3px -1.5px #2a33460a,
+    0 5px 5px -2.5px #2a334608, 0 10px 10px -5px #2a334608,
+    0 24px 24px -8px #2a334608;
+}
